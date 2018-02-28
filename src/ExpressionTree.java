@@ -2,16 +2,16 @@ import java.util.Stack;
 
 public class ExpressionTree extends TreeNode implements Expressions{
 	
-	TreeNode e;
 	
-	ExpressionTree(Object v) {
+	ExpressionTree(String str) {
+		super(str);
 		
-
+		
 	}
 
 	@Override
 	public TreeNode buildTree(String[] exp) {
-		Stack c =new Stack<String>();
+		Stack c = new Stack<String>();
 		TreeNode t = null;
 		TreeNode r;
 		TreeNode l;
@@ -32,7 +32,7 @@ public class ExpressionTree extends TreeNode implements Expressions{
 
 	@Override
 	public int evalTree() {
-		if(e.getLeft()==null) {
+		if(this.getLeft()==null) {
 			return (int) e.getValue();
 		}
 		
@@ -41,7 +41,7 @@ public class ExpressionTree extends TreeNode implements Expressions{
 		
 		
 		
-		return 0;
+		
 		
 	}
 
