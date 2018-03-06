@@ -11,11 +11,8 @@ public class ExpressionTree extends TreeNode implements Expressions{
 
 	@Override
 	public TreeNode buildTree(String[] exp) {
-		Stack c = new Stack<String>();
+		Stack c = new Stack<TreeNode>();
 		TreeNode t = null;
-		TreeNode r;
-		TreeNode l;
-		//TreeNode t = new TreeNode(exp[exp.length-1]);
 		for(int i = 0; i < exp.length-1; i++) {
 			if(exp[i] != "*" && exp[i] != "+" ) {
 				c.push(exp[i]);
@@ -26,8 +23,8 @@ public class ExpressionTree extends TreeNode implements Expressions{
 				c.push(t);
 			}
 		}
-		
-		return t;
+		//asdasd
+		return (TreeNode) c.pop();
 	}
 
 	@Override
