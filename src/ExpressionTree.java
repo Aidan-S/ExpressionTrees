@@ -83,8 +83,8 @@ public class ExpressionTree extends TreeNode implements Expressions{
 			return "";
 		}
 		if(t.getValue() == "*" || t.getValue() == "+") {
-			String a = evalTree(t.getLeft());
-			String b = evalTree(t.getRight());
+			String a = toPrefixNotation(t.getLeft());
+			String b = toPrefixNotation(t.getRight());
 		
 			if(t.getValue() == "*") {
 				return "* " + a + " " + b + " ";
@@ -93,7 +93,7 @@ public class ExpressionTree extends TreeNode implements Expressions{
 				return "+ " + a + " " + b + " ";
 			}
 		}	
-			return t.getValue();	
+			return (String) t.getValue();	
 	}
 
 	
@@ -109,8 +109,8 @@ public class ExpressionTree extends TreeNode implements Expressions{
 			return "";
 		}
 		if(t.getValue() == "*" || t.getValue() == "+") {
-			String a = evalTree(t.getLeft());
-			String b = evalTree(t.getRight());
+			String a = toInfixNotation(t.getLeft());
+			String b = toInfixNotation(t.getRight());
 		
 			if(t.getValue() == "*") {
 				return "( " + a + " * " + b +" ) ";
@@ -119,7 +119,7 @@ public class ExpressionTree extends TreeNode implements Expressions{
 				return "( " + a + " + " + b +" ) ";
 			}
 		}	
-			return t.getValue();
+			return (String) t.getValue();
 		
 	}
 
@@ -137,8 +137,8 @@ public class ExpressionTree extends TreeNode implements Expressions{
 		}
 		
 		if(t.getValue() == "*" || t.getValue() == "+") {
-			String a = evalTree(t.getLeft());
-			String b = evalTree(t.getRight());
+			String a = toPostNotation(t.getLeft());
+			String b = toPostNotation(t.getRight());
 		
 			if(t.getValue() == "*") {
 				return a + " " + b + " * ";
@@ -147,7 +147,7 @@ public class ExpressionTree extends TreeNode implements Expressions{
 				return a + " " + b + " + ";
 			}
 		}	
-			return t.getValue();
+			return (String) t.getValue();
 	}
 
 	
@@ -173,4 +173,8 @@ public class ExpressionTree extends TreeNode implements Expressions{
 		}
 		return c.pop();
 	}
+	
+	
+	
+	
 }
