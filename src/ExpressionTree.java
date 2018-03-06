@@ -18,11 +18,15 @@ public class ExpressionTree extends TreeNode implements Expressions{
 	@Override
 	public TreeNode buildTree(String[] exp) {
 		Stack<TreeNode> c =new Stack<TreeNode>();
+		TreeNode r;
+		TreeNode l;
 		for(int i = 0; i < exp.length-1; i++) {
 			if(exp[i] != "*" && exp[i] != "+") {
 				c.push(new TreeNode(exp[i]));
 			}else {
-				c.push(new TreeNode(exp[i], c.pop(), c.pop()));
+				r = c.pop();
+				l = c.pop();
+				c.push(new TreeNode(exp[i], l, r));
 			}
 		}
 		return c.pop();
@@ -88,20 +92,23 @@ public class ExpressionTree extends TreeNode implements Expressions{
 
 	public int postfixEval(String[] exp) {
 		Stack<Integer> c = new Stack<Integer>();
-		int r = 0;
+		int r;
+		int l;
 		for(int i = 0; i < exp.length-1; i++) {
 			if(exp[i] != "*" && exp[i] != "+" ) {
 				c.push(Integer.parseInt(exp[i]));
 			}else {
 				if(exp[i] == "*") {
-					c.push(c.pop() * c.pop());
+					r = c.pop();
+					l = c.pop();
+					c.push(l * r);
 				}else {
-					c.push(c.pop() + c.pop());
+					r = c.pop();
+					l = c.pop();
+					c.push(l + r);
 				}
 			}
 		}
 		return c.pop();
-
 	}
-
 }
