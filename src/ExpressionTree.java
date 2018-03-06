@@ -42,21 +42,23 @@ public class ExpressionTree extends TreeNode implements Expressions{
 	
 
 	public int evalTree(TreeNode t) {
-		if(t.getLeft() == null) {
-			return (int)t.getValue();
+		if(t == null) {
+			return 0;
 		}
+		if(t.getValue() == "*" || t.getValue() == "+") {
+			int a = evalTree(t.getLeft());
+			int b = evalTree(t.getRight());
 		
-		int a = evalTree(t.getLeft());
-		int b = evalTree(t.getRight());
+			if(t.getValue() == "*") {
+				return a*b;
+			}
+			if(t.getValue() == "+") {
+				return a+b;
+			}
+		}	
+			
+		return (int)t.getValue();
 		
-		if(t.getValue() == "*") {
-			return a*b;
-		}
-		if(t.getValue() == "+") {
-			return a+b;
-		}
-		
-		return 0;
 	}
 
 	
@@ -71,16 +73,33 @@ public class ExpressionTree extends TreeNode implements Expressions{
 
 
 	@Override
-
 	public String toInfixNotation() {
-		// TODO Auto-generated method stub
-		return null;
+		return toInfixNotation(this);
+	}
+	
+	
+	public String toInfixNotation(TreeNode t) {
+		if(t.getLeft() == null) {
+			return "";
+		}
+		if(t.getValue() == "*" || t.getValue() == "+") {
+			int a = evalTree(t.getLeft());
+			int b = evalTree(t.getRight());
+		
+			if(t.getValue() == "*") {
+				return a*b;
+			}
+			if(t.getValue() == "+") {
+				return a+b;
+			}
+			
+			return t.getValue();
+		}
 	}
 
 
 
 	@Override
-
 	public String toPostfixNotation() {
 		// TODO Auto-generated method stub
 		return null;
