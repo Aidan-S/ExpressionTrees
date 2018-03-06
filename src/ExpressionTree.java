@@ -5,15 +5,10 @@ public class ExpressionTree extends TreeNode implements Expressions{
 
 
 	ExpressionTree(Object v){
-
 		super(v);
-
 		TreeNode n = buildTree(null);
-
 		this.setLeft(n.getLeft());
-
 		this.setRight(n.getRight());
-
 		this.setValue(n.getValue());
 
 	}
@@ -21,56 +16,43 @@ public class ExpressionTree extends TreeNode implements Expressions{
 
 
 	@Override
-
-	public java.util.HashMap.TreeNode buildTree(String[] exp) {
-
-		Stack c =new Stack<TreeNode>();
-		TreeNode t;
+	public TreeNode buildTree(String[] exp) {
+		Stack<TreeNode> c =new Stack<TreeNode>();
 		for(int i = 0; i < exp.length-1; i++) {
-			if(exp[i] != "*" && exp[i] != "+" ) {
+			if(exp[i] != "*" && exp[i] != "+") {
 				c.push(new TreeNode(exp[i]));
 			}else {
-				t = new TreeNode(exp[i]);
-				c.push(t);
+				c.push(new TreeNode(exp[i], c.pop(), c.pop()));
 			}
 		}
 		return c.pop();
-
 	}
 
 
 
 	@Override
-
 	public int evalTree() {
-		int a = 0;
-		return evalTree(a);
-
+		return evalTree(this);
 	}
 
 	
 
-	public int evalTree(int sum) {
-
-		String a = "";
-		String b = "";
-
-		if(this.getLeft().getLeft() == null) {
-			a  = (String) this.getLeft().getValue();
-			b  = (String) this.getRight().getValue();
-			return Integer.parseInt(a + this.getValue() + b);
-
-		}else {
-			this.getLeft().evalTree();
+	public int evalTree(TreeNode t) {
+		if(t.getLeft() == null) {
+			return (int)t.getValue();
 		}
-
-		if(this.getRight().getRight() == null) {
-			a  = (String) this.getLeft().getValue();
-			b  = (String) this.getRight().getValue();
-			return Integer.parseInt(a + this.getValue() + b);
+		
+		int a = evalTree(t.getLeft());
+		int b = evalTree(t.getRight());
+		
+		if(t.getValue() == "*") {
+			return a*b;
 		}
-
-		return sum;
+		if(t.getValue() == "+") {
+			return a+b;
+		}
+		
+		return 0;
 	}
 
 	
@@ -105,17 +87,20 @@ public class ExpressionTree extends TreeNode implements Expressions{
 	@Override
 
 	public int postfixEval(String[] exp) {
-		Stack c = new Stack<String>();
+		Stack<Integer> c = new Stack<Integer>();
 		int r = 0;
 		for(int i = 0; i < exp.length-1; i++) {
 			if(exp[i] != "*" && exp[i] != "+" ) {
-				c.push(exp[i]);
+				c.push(Integer.parseInt(exp[i]));
 			}else {
-				r = Integer.parseInt(c.pop() + exp[i] + c.pop());
-				c.push("" + r);
+				if(exp[i] == "*") {
+					c.push(c.pop() * c.pop());
+				}else {
+					c.push(c.pop() + c.pop());
+				}
 			}
 		}
-		return Integer.parseInt((String) c.pop());
+		return c.pop();
 
 	}
 
