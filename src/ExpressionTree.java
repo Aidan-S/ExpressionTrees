@@ -4,9 +4,9 @@ public class ExpressionTree extends TreeNode implements Expressions{
 
 
 
-	ExpressionTree(Object v){
-		super(v);
-		TreeNode n = buildTree(null);
+	ExpressionTree(String[] exp){
+		super("");
+		TreeNode n = buildTree(exp);
 		this.setLeft(n.getLeft());
 		this.setRight(n.getRight());
 		this.setValue(n.getValue());

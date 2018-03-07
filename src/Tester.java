@@ -33,8 +33,6 @@ public class Tester {
 	}
 	
 	public static String[] makeArray(Scanner file, int s) {
-		
-		
 		String line = file.nextLine();
 		Scanner f = file;
 		String[] lines = new String[s];
@@ -50,7 +48,7 @@ public class Tester {
 	}
 	
 	public static int size(Scanner file) {
-		int count = -1;
+		int count = 0;
 		//how many items are in the given file
 		while (file.hasNextLine()) {
 		    count++;
@@ -62,33 +60,48 @@ public class Tester {
 	}
 	
 	public static String[] toArray(String line) {
-		return  line.trim().split("\\s+");
+		String[] nums = line.trim().split("\\s+");
+		return nums;
 	}
 	
 	
 	public static void main(String[] args) {
 		PrintWriter out = outputFile("myAnswers.txt");
+		int e;
+		String line;
 		
 		Scanner file = openWords(args[0], out);	
+		e = size(file);
+		file = openWords(args[0], out);	
 		
 		if(file == null) {
 			file = openWords("postFixExpressions.txt", out);
+			e = size(file);
+			file = openWords("postFixExpressions.txt", out);
 			if(file == null) {
 				Scanner k = new Scanner(System.in);
-				file = openWords(k.nextLine(), out);
+				line = k.nextLine();
+				file = openWords(line, out);
+				e = size(file);
+				file = openWords(line, out);
 			}
 		}
 		
-		String[] array = makeArray(file);
-		String[] array2 = makeArray(file);
+		Scanner file2 = file;
+		
+		
+		String[] array = makeArray(file, e);
+		
+		String[] array2;;
+		
 		String s;
 		
-		ExpressionTree t = new ExpressionTree(null);
+		ExpressionTree t;
 		
 		for(int i = 0; i < array.length; i++) {
 			 s = array[i];
 			 array2 = toArray(s);
-			 t.buildTree(array2);
+			 t = new ExpressionTree(array2);
 			 out.println(t.evalTree());
 			 out.println(t.toPrefixNotation());
 			 out.println(t.toInfixNotation());
@@ -98,6 +111,7 @@ public class Tester {
 		}
 		
 		file.close();
+		file2.close();
 		out.close();
 	}
 
