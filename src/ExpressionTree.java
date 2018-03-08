@@ -14,10 +14,10 @@ public class ExpressionTree extends TreeNode implements Expressions{
 	}
 
 	public boolean isNum(String str) {
-		if(str != "*" && str != "+") {
-			return true;
-		} else {
+		if(str == "*" || str == "+") {
 			return false;
+		} else {
+			return true;
 		}
 	}
 	
@@ -25,10 +25,10 @@ public class ExpressionTree extends TreeNode implements Expressions{
 
 	@Override
 	public TreeNode buildTree(String[] exp) {
-		Stack<TreeNode> c =new Stack<TreeNode>();
+		Stack<TreeNode> c = new Stack<TreeNode>();
 		TreeNode r;
 		TreeNode l;
-		for(int i = 0; i < exp.length-1; i++) {
+		for(int i = 0; i < exp.length; i++) {
 			if(isNum(exp[i])) {
 				c.push(new TreeNode(exp[i]));
 			}else {

@@ -37,7 +37,7 @@ public class Tester {
 		Scanner f = file;
 		String[] lines = new String[s];
 		
-		for(int i = 0; i < s-1; i++) {
+		for(int i = 0; i < s; i++) {
 			lines[i] = line; 
 			if(file.hasNextLine())
 				line = file.nextLine();
