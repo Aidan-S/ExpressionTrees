@@ -3,7 +3,14 @@ import java.util.Stack;
 public class ExpressionTree extends TreeNode implements Expressions{
 
 
-
+	/**
+	 * @author Aidan-S
+	 * date: March 9th, 2018
+	 * method: call the super class and create an expression tree from treeNodes
+	 * @param exp: String array that contanins each digit of the postfix notation 
+	 * @return: A Print Writer that I can print to
+	 */
+	
 	ExpressionTree(String[] exp){
 		super("");
 		TreeNode n = buildTree(exp);
