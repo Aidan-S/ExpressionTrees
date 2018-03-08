@@ -107,7 +107,7 @@ public class Tester {
 			 out.println(t.toInfixNotation());
 			 out.println(t.toPostfixNotation());
 			 out.println(t.postfixEval(array2));
-			 out.println("\n\n");
+			 out.println("\n");
 		}
 		
 		file.close();

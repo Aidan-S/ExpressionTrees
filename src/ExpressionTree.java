@@ -14,7 +14,7 @@ public class ExpressionTree extends TreeNode implements Expressions{
 	}
 
 	public boolean isNum(String str) {
-		if(str == "*" || str == "+") {
+		if(str.equals("*") || str.equals("+")) {
 			return false;
 		} else {
 			return true;
@@ -54,19 +54,20 @@ public class ExpressionTree extends TreeNode implements Expressions{
 			return 0;
 		}
 		
-		if(t.getValue() == "*" || t.getValue() == "+") {
+		if(!(isNum((String) t.getValue()))) {
 			int a = evalTree(t.getLeft());
 			int b = evalTree(t.getRight());
 		
-			if(t.getValue() == "*") {
+			if(t.getValue().equals("*")) {
 				return a*b;
 			}
-			if(t.getValue() == "+") {
+			if(t.getValue().equals("+")) {
 				return a+b;
 			}
 		}	
 			
-		return (int)t.getValue();
+		return Integer.parseInt((String) t.getValue());
+	
 		
 	}
 
@@ -82,14 +83,14 @@ public class ExpressionTree extends TreeNode implements Expressions{
 		if(t == null) {
 			return "";
 		}
-		if(t.getValue() == "*" || t.getValue() == "+") {
+		if(!(isNum((String) t.getValue()))) {
 			String a = toPrefixNotation(t.getLeft());
 			String b = toPrefixNotation(t.getRight());
 		
-			if(t.getValue() == "*") {
+			if(t.getValue().equals("*")) {
 				return "* " + a + " " + b + " ";
 			}
-			if(t.getValue() == "+") {
+			if(t.getValue().equals("+")) {
 				return "+ " + a + " " + b + " ";
 			}
 		}	
@@ -108,14 +109,14 @@ public class ExpressionTree extends TreeNode implements Expressions{
 		if(t == null) {
 			return "";
 		}
-		if(t.getValue() == "*" || t.getValue() == "+") {
+		if(!(isNum((String) t.getValue()))) {
 			String a = toInfixNotation(t.getLeft());
 			String b = toInfixNotation(t.getRight());
 		
-			if(t.getValue() == "*") {
+			if(t.getValue().equals("*")) {
 				return "( " + a + " * " + b +" ) ";
 			}
-			if(t.getValue() == "+") {
+			if(t.getValue().equals("+")) {
 				return "( " + a + " + " + b +" ) ";
 			}
 		}	
@@ -136,14 +137,14 @@ public class ExpressionTree extends TreeNode implements Expressions{
 			return "";
 		}
 		
-		if(t.getValue() == "*" || t.getValue() == "+") {
+		if(!(isNum((String) t.getValue()))) {
 			String a = toPostNotation(t.getLeft());
 			String b = toPostNotation(t.getRight());
 		
-			if(t.getValue() == "*") {
+			if(t.getValue().equals("*")) {
 				return a + " " + b + " * ";
 			}
-			if(t.getValue() == "+") {
+			if(t.getValue().equals("+")) {
 				return a + " " + b + " + ";
 			}
 		}	
@@ -156,11 +157,11 @@ public class ExpressionTree extends TreeNode implements Expressions{
 		Stack<Integer> c = new Stack<Integer>();
 		int r;
 		int l;
-		for(int i = 0; i < exp.length-1; i++) {
+		for(int i = 0; i < exp.length; i++) {
 			if(isNum(exp[i])) {
 				c.push(Integer.parseInt(exp[i]));
 			}else {
-				if(exp[i] == "*") {
+				if(exp[i].equals("*")) {
 					r = c.pop();
 					l = c.pop();
 					c.push(l * r);
