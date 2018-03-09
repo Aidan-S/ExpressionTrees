@@ -7,10 +7,9 @@ public class ExpressionTree extends TreeNode implements Expressions{
 	 * @author Aidan-S
 	 * date: March 9th, 2018
 	 * method: call the super class and create an expression tree from treeNodes
-	 * @param exp: String array that contanins each digit of the postfix notation 
-	 * @return: A Print Writer that I can print to
+	 * @param exp: String array that contains each digit of the postfixnotation 
+	 * @return: none
 	 */
-	
 	ExpressionTree(String[] exp){
 		super("");
 		TreeNode n = buildTree(exp);
@@ -20,6 +19,13 @@ public class ExpressionTree extends TreeNode implements Expressions{
 
 	}
 
+	/**
+	 * @author Aidan-S
+	 * date: March 9th, 2018
+	 * method: decide if the string is a num (not a * or +)
+	 * @param str: string that either is or isn't a num
+	 * @return: boolean of whether or not the string is a num
+	 */
 	public boolean isNum(String str) {
 		if(str.equals("*") || str.equals("+")) {
 			return false;
@@ -28,8 +34,13 @@ public class ExpressionTree extends TreeNode implements Expressions{
 		}
 	}
 	
-	
-
+	/**
+	 * @author Aidan-S
+	 * date: March 9th, 2018
+	 * method: build the Expression Tree
+	 * @param exp: String array that contains each digit of the postfixnotation 
+	 * @return: none
+	 */
 	@Override
 	public TreeNode buildTree(String[] exp) {
 		Stack<TreeNode> c = new Stack<TreeNode>();
