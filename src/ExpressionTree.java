@@ -63,7 +63,7 @@ public class ExpressionTree extends TreeNode implements Expressions{
 	 * @author Aidan-S
 	 * date: March 9th, 2018
 	 * method: evaluate the tree by calling the overloaded method
-	 * @param none
+	 * param: none
 	 * @return: the evaluation of the expression
 	 */
 	@Override
@@ -105,7 +105,7 @@ public class ExpressionTree extends TreeNode implements Expressions{
 	 * @author Aidan-S
 	 * date: March 9th, 2018
 	 * method: evaluate the tree by calling overloaded method
-	 * @param none
+	 * param: none
 	 * @return: the expression tree in prefix notation
 	 */
 	@Override
@@ -143,7 +143,7 @@ public class ExpressionTree extends TreeNode implements Expressions{
 	 * @author Aidan-S
 	 * date: March 9th, 2018
 	 * method: evaluate the tree by calling overloaded method
-	 * @param none
+	 * param: none
 	 * @return: the expression tree in infix notation
 	 */
 	@Override
@@ -181,7 +181,7 @@ public class ExpressionTree extends TreeNode implements Expressions{
 	 * @author Aidan-S
 	 * date: March 9th, 2018
 	 * method: evaluate the tree by calling overloaded method
-	 * @param none
+	 * param: none
 	 * @return: the expression tree in postfix notation
 	 */
 	@Override

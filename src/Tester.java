@@ -29,8 +29,8 @@ public class Tester {
 	 * @author Aidan-S
 	 * date: March 11th, 2018
 	 * method: create a scanner that I can use to read in Prof. Kelly's files
-	 * @param fName: the name of the file to read
-	 * 		  out: the file to print to
+	 * @param fname: the name of the file to read
+	 * @param out: the file to print to
 	 * @return: the scanner for the given file
 	 */
 	public static Scanner openWords(String fname, PrintWriter out) {
@@ -50,7 +50,7 @@ public class Tester {
 	 * date: March 11th, 2018
 	 * method: make an array of lines in the file
 	 * @param file: the scanner that is reading in the file
-	 * 		  s: how many lines the file has
+	 * @param s: how many lines the file has
 	 * @return: String array of the lines
 	 */
 	public static String[] makeArray(Scanner file, int s) {
@@ -102,7 +102,7 @@ public class Tester {
 	 * date: March 11th, 2018
 	 * method: test the expression tree program by taking in a file full of postfix expressions and making trees from them, outputting them to a file 
 	 * @param args: file name arguments 
-	 * @return: none
+	 * return none
 	 */
 	public static void main(String[] args) {
 		PrintWriter out = outputFile("Aidan_Expressions.txt");
