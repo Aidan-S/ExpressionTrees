@@ -39,7 +39,7 @@ public class ExpressionTree extends TreeNode implements Expressions{
 	 * date: March 9th, 2018
 	 * method: build the Expression Tree
 	 * @param exp: String array that contains each digit of the postfixnotation 
-	 * @return: none
+	 * @return: Treenode that acts as the root of the tree
 	 */
 	@Override
 	public TreeNode buildTree(String[] exp) {
@@ -59,14 +59,26 @@ public class ExpressionTree extends TreeNode implements Expressions{
 	}
 
 
-
+	/**
+	 * @author Aidan-S
+	 * date: March 9th, 2018
+	 * method: evaluate the tree by calling the overloaded method
+	 * @param none
+	 * @return: the evaluation of the expression
+	 */
 	@Override
 	public int evalTree() {
 		return evalTree(this);
 	}
 
 	
-
+	/**
+	 * @author Aidan-S
+	 * date: March 9th, 2018
+	 * method: evaluate the tree by traversing it and combining the leafs
+	 * @param t: the treenode to be evaluated in that iteration
+	 * @return: the evaluation of the expression
+	 */
 	public int evalTree(TreeNode t) {
 		if(t == null) {
 			return 0;
@@ -89,14 +101,25 @@ public class ExpressionTree extends TreeNode implements Expressions{
 		
 	}
 
-	
-
+	/**
+	 * @author Aidan-S
+	 * date: March 9th, 2018
+	 * method: evaluate the tree by calling overloaded method
+	 * @param none
+	 * @return: the expression tree in prefix notation
+	 */
 	@Override
 	public String toPrefixNotation() {
 		return toPrefixNotation(this);
 	}
 
-	
+	/**
+	 * @author Aidan-S
+	 * date: March 9th, 2018
+	 * method: evaluate the tree by traversing it and putting together the expression recursively, root, left, right
+	 * @param t: t: the treenode to be evaluated in that iteration
+	 * @return: the expression tree in prefix notation
+	 */
 	public String toPrefixNotation(TreeNode t) {
 		if(t == null) {
 			return "";
@@ -116,13 +139,25 @@ public class ExpressionTree extends TreeNode implements Expressions{
 	}
 
 	
-
+	/**
+	 * @author Aidan-S
+	 * date: March 9th, 2018
+	 * method: evaluate the tree by calling overloaded method
+	 * @param none
+	 * @return: the expression tree in infix notation
+	 */
 	@Override
 	public String toInfixNotation() {
 		return toInfixNotation(this);
 	}
 	
-	
+	/**
+	 * @author Aidan-S
+	 * date: March 9th, 2018
+	 * method: evaluate the tree by traversing it and putting together the expression recursively, left, root, right
+	 * @param t: the treenode to be evaluated in that iteration
+	 * @return: the expression tree in infix notation
+	 */
 	public String toInfixNotation(TreeNode t) {
 		if(t == null) {
 			return "";
@@ -142,14 +177,25 @@ public class ExpressionTree extends TreeNode implements Expressions{
 		
 	}
 
-
-
+	/**
+	 * @author Aidan-S
+	 * date: March 9th, 2018
+	 * method: evaluate the tree by calling overloaded method
+	 * @param none
+	 * @return: the expression tree in postfix notation
+	 */
 	@Override
 	public String toPostfixNotation() {
 		return toPostNotation(this);
 	}
 
-	
+	/**
+	 * @author Aidan-S
+	 * date: March 9th, 2018
+	 * method: evaluate the tree by traversing it and putting together the expression recursively, left, right, root
+	 * @param t: the treenode to be evaluated in that iteration
+	 * @return: the expression tree in postfix notation
+	 */
 	public String toPostNotation(TreeNode t) {
 		if(t == null) {
 			return "";
@@ -169,7 +215,13 @@ public class ExpressionTree extends TreeNode implements Expressions{
 			return (String) t.getValue();
 	}
 
-	
+	/**
+	 * @author Aidan-S
+	 * date: March 9th, 2018
+	 * method: evaluate a postfix expression  
+	 * @param exp: String array that contains each digit of the postfixnotation 
+	 * @return: The evaltion of the expression  
+	 */
 	@Override
 	public int postfixEval(String[] exp) {
 		Stack<Integer> c = new Stack<Integer>();
